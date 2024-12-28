@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { FaUserCircle } from 'react-icons/fa'; // Import icon for profile
 import '../style/SchemesDashboard.css';
 
 const SchemesDashboard = () => {
@@ -33,9 +34,22 @@ const SchemesDashboard = () => {
     navigate(`/scheme/${id}`);
   };
 
+  const handleProfileClick = () => {
+    // Navigate to the profile page
+    navigate('/UserProfileForm');
+  };
+
   return (
     <div className="dashboard-container">
-      <h1>Available Schemes</h1>
+      <div className="header">
+        <h1>Available Schemes</h1>
+
+        {/* Profile icon button */}
+        <button className="profile-button" onClick={handleProfileClick}>
+          <FaUserCircle size={30} />
+        </button>
+      </div>
+
       <ul className="schemes-list">
         {schemes.map((scheme) => (
           <li key={scheme._id} className="scheme-item">
@@ -50,4 +64,3 @@ const SchemesDashboard = () => {
 };
 
 export default SchemesDashboard;
-

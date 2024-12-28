@@ -72,7 +72,7 @@ const UserProfileForm = () => {
 
   return (
     <>
-      <h1>User Profile Form</h1>
+      <h1>User Profile</h1>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <label>Name:</label>
         <input
