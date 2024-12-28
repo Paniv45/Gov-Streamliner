@@ -77,14 +77,39 @@ router.post('/profile', upload.fields([
   }
 });
 
-router.get('/test', async (req, res) => {
+
+router.post('/add-scheme', async (req, res) => {
+  try {
+    const scheme = new Scheme({
+      tags: Array.isArray(req.body.tags) ? req.body.tags : [req.body.tags],
+      benefits: Array.isArray(req.body.benefits) ? req.body.benefits : [req.body.benefits],
+      eligibility: Array.isArray(req.body.eligibility) ? req.body.eligibility : [req.body.eligibility],
+      docs_required: Array.isArray(req.body.docs_required) ? req.body.docs_required : [req.body.docs_required],
+      application_process: Array.isArray(req.body.application_process) ? req.body.application_process : [req.body.application_process],
+      title: req.body.title,
+      desc: req.body.desc,
+    });
+
+    console.log(req.body);
+    console.log(scheme);
+
+    await scheme.save();
+    res.status(200).json({ message: 'Scheme saved successfully' });
+  }
+  catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error saving scheme' });
+  }
+});
+
+
+router.get('/schemes', async (req, res) => {
   try {
     const schemes = await Scheme.find({});
-
-    // Log and send schemes as the response
-    console.log('Scheme Data:', schemes);
+    console.log("Fetched All Schemes");
     res.status(200).json(schemes);
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Error fetching schemes:', error);
     res.status(500).json({ message: 'Error fetching schemes' });
   }

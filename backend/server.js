@@ -18,8 +18,9 @@ app.use(
 )
 
 // Middleware
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use('/uploads', express.static('uploads')); // Serve uploaded files
+// app.use('/uploads', express.static('uploads')); // Serve uploaded files
 
 // Routes
 app.use('/api', userRoutes); // Use the user routes

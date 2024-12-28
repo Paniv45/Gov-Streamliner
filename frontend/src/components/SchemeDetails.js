@@ -15,7 +15,6 @@ const SchemeDetails = () => {
       try {
         
         const response = await axios.get(`http://localhost:5000/api/scheme/${id}`);
-        
         setScheme(response.data);
       } catch (err) {
         console.error('API fetch error:', err); // Log the error
@@ -36,7 +35,8 @@ const SchemeDetails = () => {
       <h1>{scheme.title}</h1>
       <p><strong>Tags:</strong>{scheme.tags}</p>
       <p><strong>Description:</strong> {scheme.desc}</p>
-      <p><strong>Benefits:</strong> {scheme.benifits}</p>
+      <p><strong>Benefits:</strong> {scheme.benefits}</p>
+      <p><strong>Eligibility:</strong>{scheme.eligibility}</p>
       <p><strong>Document Required:</strong>{scheme.docs_required}</p>
       <p><strong>Application Process:</strong> {scheme.application_process}</p>
     </div>

@@ -105,7 +105,7 @@ const SchemesDashboard = () => {
   useEffect(() => {
     const fetchSchemes = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/test');
+        const response = await axios.get('http://localhost:5000/api/schemes');
         setSchemes(response.data);
         setFilteredSchemes(response.data);
       } catch (err) {
@@ -136,7 +136,7 @@ const SchemesDashboard = () => {
   const handleShowSchemes = () => {
     const scoredSchemes = schemes.map((scheme) => {
       // Split tags into individual words if needed and process them into lowercase
-      const tags = Array.isArray(scheme.tags) 
+      const tags = Array.isArray(scheme.tags)
         ? scheme.tags.flatMap(tag => tag.toLowerCase().split(' ')) // Split tags like "Girl Child" into ["girl", "child"]
         : [];
 
