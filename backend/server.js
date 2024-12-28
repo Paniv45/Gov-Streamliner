@@ -5,6 +5,11 @@ const mongoose = require('mongoose');
 const userRoutes = require('./routes/userRoutes');
 const app = express();
 const cors = require ('cors');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+MONGO_URI = process.env.MONGO_URI;
 
 app.use(
     cors({
@@ -20,7 +25,7 @@ app.use('/uploads', express.static('uploads')); // Serve uploaded files
 app.use('/api', userRoutes); // Use the user routes
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/gov-streamliner', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
     app.listen(5000, () => {

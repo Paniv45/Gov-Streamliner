@@ -3,8 +3,16 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
-const User = require('../models/User');
 const router = express.Router();
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+MONGO_URI = process.env.MONGO_URI;
+
+const User = require('../models/User');
+const Scheme = require('../models/Scheme');
+
 
 // Configure storage for uploaded files
 const storage = multer.diskStorage({
@@ -66,6 +74,19 @@ router.post('/profile', upload.fields([
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Error saving user profile' });
+  }
+});
+
+router.get('/test', async (req, res) => {
+  try {
+    const schemes = await Scheme.find({});
+
+    // Log and send schemes as the response
+    console.log('Scheme Data:', schemes);
+    res.status(200).json(schemes);
+  } catch (error) {
+    console.error('Error fetching schemes:', error);
+    res.status(500).json({ message: 'Error fetching schemes' });
   }
 });
 
