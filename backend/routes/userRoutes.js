@@ -90,4 +90,20 @@ router.get('/test', async (req, res) => {
   }
 });
 
+router.get('/scheme/:id', async (req, res) => {
+  try {
+    const schemeId = req.params.id; // Get the scheme id from the URL params
+    const scheme = await Scheme.findById(schemeId); // Find scheme by ID
+
+    if (!scheme) {
+      return res.status(404).json({ message: 'Scheme not found' }); // Return error if scheme not found
+    }
+
+    res.status(200).json(scheme); // Send the scheme details as the response
+  } catch (error) {
+    console.error('Error fetching scheme details:', error);
+    res.status(500).json({ message: 'Error fetching scheme details' }); // Return error if something goes wrong
+  }
+});
+
 module.exports = router;

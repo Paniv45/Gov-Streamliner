@@ -1,23 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import UserProfileForm from './components/UserProfileForm';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SchemesDashboard from './components/SchemesDashboard';
-
+import SchemeDetails from './components/SchemeDetails';
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        
-        <Routes>
-          <Route path="/" element={<SchemesDashboard />} />
-          <Route path="/UserProfileForm" element={<UserProfileForm />} />
-          <Route path="/SchemesDashboard" element={<SchemesDashboard />} />
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<SchemesDashboard />} />
+        <Route path="/scheme/:id" element={<SchemeDetails />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
-

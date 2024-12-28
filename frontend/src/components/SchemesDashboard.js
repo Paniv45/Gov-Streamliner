@@ -1,20 +1,23 @@
-// frontend/src/components/SchemesDashboard.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import '../style/SchemesDashboard.css';
 
 const SchemesDashboard = () => {
   const [schemes, setSchemes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     const fetchSchemes = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/schemes');
+        const response = await axios.get('http://localhost:5000/api/test');
         setSchemes(response.data);
-        setLoading(false);
       } catch (err) {
-        setError('Error fetching schemes');
+        console.error('API fetch error:', err.message);
+        setError('Error fetching schemes.');
+      } finally {
         setLoading(false);
       }
     };
@@ -25,15 +28,20 @@ const SchemesDashboard = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
+  const handleSchemeClick = (id) => {
+    // Navigate to the detailed page of the scheme
+    navigate(`/scheme/${id}`);
+  };
+
   return (
-    <div>
+    <div className="dashboard-container">
       <h1>Available Schemes</h1>
-      <ul>
+      <ul className="schemes-list">
         {schemes.map((scheme) => (
-          <li key={scheme._id}>
-            <h2>{scheme.name}</h2>
-            <p>{scheme.description}</p>
-            {/* Add more scheme details as needed */}
+          <li key={scheme._id} className="scheme-item">
+            <button className="scheme-title" onClick={() => handleSchemeClick(scheme._id)}>
+              {scheme.title}
+            </button>
           </li>
         ))}
       </ul>
@@ -42,3 +50,4 @@ const SchemesDashboard = () => {
 };
 
 export default SchemesDashboard;
+

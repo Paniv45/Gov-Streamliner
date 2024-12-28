@@ -1,0 +1,44 @@
+.dashboard-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .schemes-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .scheme-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .scheme-title {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .scheme-title:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .scheme-details {
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
