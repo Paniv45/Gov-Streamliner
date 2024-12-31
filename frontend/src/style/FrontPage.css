@@ -1,0 +1,198 @@
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #003366;
+    color: white;
+    align-items: center;
+  }
+  
+  .navbar-logo h1 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  
+  .navbar-login .login-btn {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+  }
+  
+  .navbar-login .login-btn:hover {
+    background-color: #45a049;
+  }
+
+  .h1{
+    color: white;
+  }
+  
+  /* Hero Section Styles */
+  .hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff7a18, #af002d);
+    color: white;
+    text-align: center;
+    padding-top: 80px;
+  }
+  
+  .hero-content h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  .hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+  }
+  
+  /* Talk to Our Bot Section */
+  .talk-to-bot {
+    padding: 60px 40px;
+    background-color: #f4f4f4;
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .talk-to-bot h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .talk-to-bot p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+  }
+  
+  .talk-btn {
+    padding: 12px 25px;
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .talk-btn:hover {
+    background-color: #e67e00;
+  }
+  
+  /* Features Section Styles */
+  .features {
+    padding: 60px 40px;
+    background-color: #f4f4f4;
+    text-align: center;
+  }
+  
+  .features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #333;
+  }
+  
+  .features-cards {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+  }
+  
+  .feature-card {
+    background: #fff;
+    padding: 30px;
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-card h3 {
+    font-size: 1.8rem;
+    color: #4caf50;
+    margin-bottom: 15px;
+  }
+  
+  .feature-card p {
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  /* Call-to-Action Section Styles */
+  .cta-section {
+    padding: 60px 40px;
+    text-align: center;
+  }
+  
+  .cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .cta-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .explore-btn {
+    padding: 12px 25px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .explore-btn:hover {
+    background-color: #45a049;
+  }
+  
+  /* Footer Styles */
+  .footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #003366;
+    color: white;
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .hero-content h2 {
+      font-size: 2.5rem;
+    }
+  
+    .hero-content p {
+      font-size: 1.1rem;
+    }
+  
+    .features-cards {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .feature-card {
+      width: 80%;
+      margin-bottom: 30px;
+    }
+  }
+  

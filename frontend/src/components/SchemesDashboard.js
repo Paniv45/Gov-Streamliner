@@ -117,7 +117,23 @@ const SchemesDashboard = () => {
         <FaUserCircle /> Go to Profile
       </button>
 
-      <button className="show-schemes-button" onClick={handleShowSchemes}>
+      <button 
+        className="show-schemes-button" 
+        onClick={handleShowSchemes} 
+        style={{
+          backgroundColor: 'green', 
+          color: 'white', 
+          border: 'none', 
+          padding: '12px 24px', 
+          borderRadius: '8px', 
+          fontSize: '16px', 
+          cursor: 'pointer', 
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', 
+          transition: 'background 0.3s ease'
+      }}
+    >
+
+
         Show Schemes Based on My Profile
       </button>
 
