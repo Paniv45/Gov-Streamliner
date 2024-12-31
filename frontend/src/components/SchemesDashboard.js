@@ -15,7 +15,7 @@ const SchemesDashboard = () => {
   // Sample user profile
   const userProfile = {
     name: "Aarav Sharma",
-    gender: "Woman  ", // Ensure this matches the tags exactly
+    gender: "Woman", // Ensure this matches the tags exactly
     state: "uttar_pradesh", // Ensure state is lowercase in the tags
     age: 25, // Ensure age is in string format
   };
