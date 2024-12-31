@@ -27,6 +27,15 @@ const LandingPage = () => {
       {/* Hero Section */}
       <div className="hero-section">
         <div className="hero-content">
+        <h2>
+  <img 
+    src="https://media.licdn.com/dms/image/v2/D4D0BAQGEkNw8gQ527g/company-logo_200_200/company-logo_200_200/0/1696920514115?e=2147483647&v=beta&t=OmAFbSl_dqMKQJIRP86cW2HYfNS-kbOIkWBs-8eo_Sc" 
+    alt="Company Logo"
+    style={{ width: '150px', height: '150px' }} 
+  />
+</h2>
+
+            
           <h2>Your Gateway to Government Schemes</h2>
           <p>
             Find the best government schemes tailored for you. Get recommendations based on your profile, and explore options like never before.
