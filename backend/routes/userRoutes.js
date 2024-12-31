@@ -132,3 +132,38 @@ router.get('/scheme/:id', async (req, res) => {
 });
 
 module.exports = router;
+
+
+
+
+// Add this new route to get top 5 matching schemes
+router.get('/schemes/matches', async (req, res) => {
+  try {
+    const { tags } = req.query; // tags is an array of tags passed as a query parameter
+
+    if (!tags || !Array.isArray(tags)) {
+      return res.status(400).json({ message: 'Invalid or missing tags parameter' });
+    }
+
+    // Fetch all schemes from the database
+    const schemes = await Scheme.find();
+
+    // Calculate match score for each scheme based on how many tags they share
+    const matchedSchemes = schemes.map((scheme) => {
+      const sharedTags = scheme.tags.filter(tag => tags.includes(tag)); // Find common tags
+      return {
+        ...scheme.toObject(),
+        matchScore: sharedTags.length, // Match score is the number of matching tags
+      };
+    });
+
+    // Sort schemes by match score in descending order
+    const sortedSchemes = matchedSchemes.sort((a, b) => b.matchScore - a.matchScore);
+
+    // Return the top 5 schemes based on the match score
+    res.status(200).json(sortedSchemes.slice(0, 5));
+  } catch (error) {
+    console.error('Error fetching matching schemes:', error);
+    res.status(500).json({ message: 'Error fetching matching schemes' });
+  }
+});
