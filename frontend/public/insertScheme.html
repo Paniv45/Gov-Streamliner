@@ -117,6 +117,7 @@
     </div>
 
     <button id="btn-submit">Add Scheme</button>
+    <button id="btn-clear">Clear Scheme</button>
 
     <!-- response display -->
     <span id="response"></span>
@@ -145,8 +146,12 @@
 
     const form = document.getElementById('scheme-form');
     const btnSubmit = document.getElementById('btn-submit');
+    const btnClear = document.getElementById('btn-clear');
 
-    // add event listener to submit button to submit form data
+    btnClear.addEventListener('click', (e) => {
+      e.preventDefault();
+      form.reset();
+    });
 
     btnSubmit.addEventListener('click', async (e) => {
       e.preventDefault();
