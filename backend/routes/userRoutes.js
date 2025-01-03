@@ -187,11 +187,11 @@ async function matchSchemes(userQuery) {
 }
 
 router.post('/chat', async (req, res) => {
-  const { query } = req.body;
-  if (!query) return res.status(400).json({ error: 'Query is required' });
+  const { message } = req.body;
+  if (!message) return res.status(400).json({ error: 'message is required' });
 
   try {
-    const matchedSchemes = await matchSchemes(query);
+    const matchedSchemes = await matchSchemes(message);
     res.json(matchedSchemes);
   } catch (error) {
     console.error('Error:', error);
