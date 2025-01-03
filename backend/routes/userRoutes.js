@@ -5,10 +5,16 @@ const multer = require('multer');
 const path = require('path');
 const router = express.Router();
 const dotenv = require('dotenv');
+const OpenAI = require('openai');
+const { MongoClient } = require('mongodb');
 
 dotenv.config();
 
 MONGO_URI = process.env.MONGO_URI;
+OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+
+
+const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 
 const User = require('../models/User');
 const Scheme = require('../models/Scheme');
@@ -131,11 +137,70 @@ router.get('/scheme/:id', async (req, res) => {
   }
 });
 
-module.exports = router;
+
+// Chatbot API
+
+// Fetch all schemes from MongoDB
+async function getAllSchemes() {
+  const client = new MongoClient(MONGO_URI);
+  try {
+    await client.connect();
+    const database = client.db("test");
+    const collection = database.collection("schemes");
+    return await collection.find({}).toArray();
+  }
+  catch (error) {
+    console.error('Error fetching schemes:', error);
+    throw error;
+  }
+  finally {
+    await client.close();
+  }
+}
+
+// Match input query with schemes
+async function matchSchemes(userQuery) {
+  const schemes = await getAllSchemes();
+  // const schemes1 = await getAllSchemes();
+  // const schemes2 = await Scheme.find({});
+  // console.log(schemes1);
+  // console.log(schemes2);
+  // console.log(schemes1.length);
+  // console.log(schemes2.length);
+  // console.log(schemes1 === schemes2);
+  // return [];
+  const schemeTitles = schemes.map(scheme => scheme.title);
+  // const schemeDescriptions = schemes.map(scheme => scheme.desc);
+
+  const prompt = `User query: ${userQuery}\n\nSchemes:\n${schemeTitles.join('\n')}\n\nReturn the 5 most relevant scheme descriptions.`;
+  // const prompt = `User query: ${userQuery}\n\nSchemes:\n${schemeDescriptions.join('\n')}\n\nReturn the 5 most relevant scheme descriptions.`;
+
+  const response = await openai.chat.completions.create({
+    model: 'gpt-4o-mini',
+    messages: [{ role: 'system', content: 'Match user queries with government schemes. Give just the titles of schemes only, WITHOUT any serial numbers.' }, { role: 'user', content: prompt }],
+    max_tokens: 300,
+  });
+
+  const matchedTitles = response.choices[0].message.content.split('\n').map(desc => desc.trim());
+  const matchedSchemes = schemes.filter(scheme => matchedTitles.includes(scheme.title));
+  return matchedSchemes.map(scheme => scheme._id);
+}
+
+router.post('/chat', async (req, res) => {
+  const { query } = req.body;
+  if (!query) return res.status(400).json({ error: 'Query is required' });
+
+  try {
+    const matchedSchemes = await matchSchemes(query);
+    res.json(matchedSchemes);
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 
-
-
+// Recommendation System
 // Add this new route to get top 5 matching schemes
 router.get('/schemes/matches', async (req, res) => {
   try {
@@ -167,3 +232,5 @@ router.get('/schemes/matches', async (req, res) => {
     res.status(500).json({ message: 'Error fetching matching schemes' });
   }
 });
+
+module.exports = router;
