@@ -154,7 +154,8 @@ async function matchSchemes(userQuery) {
 
   const matchedTitles = response.choices[0].message.content.split('\n').map(desc => desc.trim());
   const matchedSchemes = schemes.filter(scheme => matchedTitles.includes(scheme.title));
-  return matchedSchemes.map(scheme => scheme._id);
+  // return matchedSchemes.map(scheme => scheme._id);
+  return matchedSchemes;
 }
 
 router.post('/chat', async (req, res) => {
