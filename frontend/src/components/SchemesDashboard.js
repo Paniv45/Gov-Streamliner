@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { FaSearch, FaUserCircle } from 'react-icons/fa';
 import '../style/SchemesDashboard.css';
+import Chatbot from './Chatbot';
 
 const SchemesDashboard = () => {
   const [schemes, setSchemes] = useState([]);
@@ -146,7 +147,9 @@ const SchemesDashboard = () => {
           </li>
         ))}
       </ul>
+      <Chatbot/>
     </div>
+    
   );
 };
 

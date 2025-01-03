@@ -5,6 +5,7 @@ import SchemeDetails from './components/SchemeDetails';
 import UserProfileForm from './components/UserProfileForm';
 import LandingPage from './components/FrontPage';
 
+
 function App() {
   return (
     <Router>
@@ -13,7 +14,7 @@ function App() {
         <Route path="/SchemesDashboard" element={<SchemesDashboard />} />
         <Route path="/scheme/:id" element={<SchemeDetails />} />
         <Route path="/UserProfileForm" element={<UserProfileForm />} />
-        
+        {/* <Route path="/Chatbot" element={<Chatbot />} /> */}
       </Routes>
     </Router>
   );

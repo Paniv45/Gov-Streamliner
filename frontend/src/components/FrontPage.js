@@ -45,7 +45,7 @@ const LandingPage = () => {
           <section className="talk-to-bot">
             <h3>Talk to Our Bot in Your Own Way</h3>
             <p>Have questions? Ask our bot to find the right government schemes for you.</p>
-            <button className="talk-btn">Start Chat</button>
+            <button className="talk-btn" onClick={handleLogin}>Start Chat</button>
           </section>
         </div>
       </div>
