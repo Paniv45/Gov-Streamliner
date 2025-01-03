@@ -1,12 +1,9 @@
-// backend/routes/userRoutes.js
-
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const router = express.Router();
 const dotenv = require('dotenv');
 const OpenAI = require('openai');
-const { MongoClient } = require('mongodb');
 
 dotenv.config();
 
@@ -139,36 +136,10 @@ router.get('/scheme/:id', async (req, res) => {
 
 
 // Chatbot API
-
-// Fetch all schemes from MongoDB
-async function getAllSchemes() {
-  const client = new MongoClient(MONGO_URI);
-  try {
-    await client.connect();
-    const database = client.db("test");
-    const collection = database.collection("schemes");
-    return await collection.find({}).toArray();
-  }
-  catch (error) {
-    console.error('Error fetching schemes:', error);
-    throw error;
-  }
-  finally {
-    await client.close();
-  }
-}
-
 // Match input query with schemes
 async function matchSchemes(userQuery) {
-  const schemes = await getAllSchemes();
-  // const schemes1 = await getAllSchemes();
-  // const schemes2 = await Scheme.find({});
-  // console.log(schemes1);
-  // console.log(schemes2);
-  // console.log(schemes1.length);
-  // console.log(schemes2.length);
-  // console.log(schemes1 === schemes2);
-  // return [];
+  const schemes = await Scheme.find({});
+
   const schemeTitles = schemes.map(scheme => scheme.title);
   // const schemeDescriptions = schemes.map(scheme => scheme.desc);
 
