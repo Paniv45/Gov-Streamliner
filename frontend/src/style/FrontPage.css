@@ -1,9 +1,6 @@
-/* General Styles */
-.landing-page * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+/* Landing Page Styles */
+.landing-page {
+  font-family: 'Arial', sans-serif;
 }
 
 /* Navbar Styles */
@@ -56,6 +53,11 @@
 .landing-page .hero-content p {
   font-size: 1.3rem;
   margin-bottom: 30px;
+}
+
+.landing-page .hero-content .picture img {
+  max-width: 150px;
+  border-radius: 10px;
 }
 
 /* Talk to Our Bot Section */
@@ -162,14 +164,6 @@
   background-color: #45a049;
 }
 
-/* Footer Styles */
-.landing-page .footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #003366;
-  color: white;
-}
-
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .landing-page .hero-content h2 {
@@ -190,27 +184,9 @@
     margin-bottom: 30px;
   }
 
-  /* Ensure padding for sections and button spacing */
-  .landing-page .talk-to-bot {
+  .landing-page .talk-to-bot,
+  .landing-page .features,
+  .landing-page .cta-section {
     padding: 40px 20px;
-  }
-
-  /* Adjust the position of the Chat Now button */
-  .chat-now-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 12px 20px;
-    background-color: #007bff;
-    color: white;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    cursor: pointer;
-    z-index: 1000;
-  }
-
-  /* Ensure space between content and Chat Now button */
-  .landing-page .talk-to-bot, .landing-page .features, .landing-page .cta-section {
-    margin-bottom: 80px;
   }
 }

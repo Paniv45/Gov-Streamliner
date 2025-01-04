@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { FaComments } from 'react-icons/fa'; // Import Font Awesome icon for the chatbot button
+import '../style/chatbot.css';
 
 const Chatbot = () => {
     const [chatInput, setChatInput] = useState('');

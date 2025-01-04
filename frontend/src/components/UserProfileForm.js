@@ -71,9 +71,10 @@ const UserProfileForm = () => {
   };
 
   return (
-    <>
+    <div className="user-profile-form">
       <h1>User Profile</h1>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
+        {/* Form Fields */}
         <label>Name:</label>
         <input
           type="text"
@@ -176,7 +177,7 @@ const UserProfileForm = () => {
         />
         <button type="submit">Submit</button>
       </form>
-    </>
+    </div>
   );
 };
 

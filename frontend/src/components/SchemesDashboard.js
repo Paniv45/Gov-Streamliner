@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaSearch, FaUserCircle } from 'react-icons/fa';
 import '../style/SchemesDashboard.css';
 import Chatbot from './Chatbot';
+import Footer from './footer';
 
 const SchemesDashboard = () => {
   const [schemes, setSchemes] = useState([]);
@@ -16,9 +17,9 @@ const SchemesDashboard = () => {
   // Sample user profile
   const userProfile = {
     name: "Aarav Sharma",
-    gender: "Woman", // Ensure this matches the tags exactly
-    state: "uttar_pradesh", // Ensure state is lowercase in the tags
-    age: 25, // Ensure age is in string format
+    gender: "Woman", 
+    state: "uttar_pradesh", 
+    age: 25, 
   };
 
   useEffect(() => {
@@ -56,14 +57,13 @@ const SchemesDashboard = () => {
     const scoredSchemes = schemes.map((scheme) => {
       // Split tags into individual words if needed and process them into lowercase
       const tags = Array.isArray(scheme.tags)
-        ? scheme.tags.flatMap(tag => tag.toLowerCase().split(' ')) // Split tags like "Girl Child" into ["girl", "child"]
+        ? scheme.tags.flatMap(tag => tag.toLowerCase().split(' ')) 
         : [];
 
       let matchCount = 0;
 
-      console.log("Tags for scheme:", tags); // Debugging log for tags
+      // console.log("Tags for scheme:", tags); 
 
-      // Match user profile fields with tags
       if (userProfile.gender && tags.includes(userProfile.gender.toLowerCase())) {
         matchCount++;
       }
@@ -74,7 +74,7 @@ const SchemesDashboard = () => {
         matchCount++;
       }
 
-      console.log(`Match count for scheme ${scheme.title}:`, matchCount); // Debugging log for match count
+      // console.log(`Match count for scheme ${scheme.title}:`, matchCount); // Debugging log for match count
 
       return { ...scheme, matchCount };
     });
@@ -100,6 +100,7 @@ const SchemesDashboard = () => {
   if (error) return <p>{error}</p>;
 
   return (
+    <>
     <div className="dashboard-container">
       <h1>Available Schemes</h1>
 
@@ -148,7 +149,10 @@ const SchemesDashboard = () => {
         ))}
       </ul>
       <Chatbot/>
+      
     </div>
+    <Footer/>
+    </>
     
   );
 };

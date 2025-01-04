@@ -1,14 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Use navigate for routing
 import '../style/FrontPage.css'; // Import the CSS file for styling
+import Footer from "./footer";
+
 
 const LandingPage = () => {
   const navigate = useNavigate();
 
-  // Function to handle login and navigation to SchemeDetails.js page
   const handleLogin = () => {
-    // Logic for user authentication can be added here (e.g., check if the user is logged in)
-    navigate("/SchemesDashboard"); // Navigate to SchemeDetails.js after successful login
+    navigate("/SchemesDashboard"); 
   };
 
   return (
@@ -16,8 +16,7 @@ const LandingPage = () => {
       {/* Navbar */}
       <div className="navbar">
         <div className="navbar-logo">
-        <h1 style={{ color: 'white' }}>Gov Schemes</h1>
-
+          <h1 style={{ color: 'white' }}>Gov Schemes</h1>
         </div>
         <div className="navbar-login">
           <button className="login-btn" onClick={handleLogin}>Login</button>
@@ -27,15 +26,13 @@ const LandingPage = () => {
       {/* Hero Section */}
       <div className="hero-section">
         <div className="hero-content">
-        <h2>
-  <img 
-    src="https://media.licdn.com/dms/image/v2/D4D0BAQGEkNw8gQ527g/company-logo_200_200/company-logo_200_200/0/1696920514115?e=2147483647&v=beta&t=OmAFbSl_dqMKQJIRP86cW2HYfNS-kbOIkWBs-8eo_Sc" 
-    alt="Company Logo"
-    style={{ width: '150px', height: '150px' }} 
-  />
-</h2>
-
-            
+          <div className="picture">
+            <img 
+              src="https://media.licdn.com/dms/image/v2/D4D0BAQGEkNw8gQ527g/company-logo_200_200/company-logo_200_200/0/1696920514115?e=2147483647&v=beta&t=OmAFbSl_dqMKQJIRP86cW2HYfNS-kbOIkWBs-8eo_Sc" 
+              alt="Company Logo"
+              
+            />
+          </div>
           <h2>Your Gateway to Government Schemes</h2>
           <p>
             Find the best government schemes tailored for you. Get recommendations based on your profile, and explore options like never before.
@@ -84,11 +81,9 @@ const LandingPage = () => {
         <button className="explore-btn" onClick={handleLogin}>Explore Schemes</button>
       </section>
 
-      {/* Footer */}
-      <footer className="footer">
-        <p>&copy; 2024 Government Schemes | All rights reserved</p>
-      </footer>
-    </div>
+      <Footer/>
+    </div> 
+    
   );
 };
 

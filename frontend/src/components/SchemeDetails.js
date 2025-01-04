@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import jsPDF from 'jspdf';
 import '../style/SchemeDetails.css';
+import Footer from './footer';
 
 const SchemeDetails = () => {
   const { id } = useParams(); // Get the scheme ID from the URL
@@ -97,6 +98,7 @@ const SchemeDetails = () => {
   if (error) return <p>{error}</p>;
 
   return (
+    <>
     <div className="scheme-details-container">
       <h1>{scheme.title}</h1>
       <div className="tags">
@@ -132,6 +134,8 @@ const SchemeDetails = () => {
         )}
       </div>
 
+
+
       {/* Documents Required */}
       <div className="documents">
         <h2>Documents Required</h2>
@@ -153,11 +157,15 @@ const SchemeDetails = () => {
         )}
       </div>
 
+
+
       {/* Generate PDF */}
       <button onClick={handleGeneratePdf} className="generate-pdf-button">
         Generate PDF
       </button>
       {pdfGenerated && <p>PDF has been successfully generated!</p>}
+
+
 
       <div className="recommendations">
         <h2>Top 5 Matching Schemes</h2>
@@ -176,6 +184,8 @@ const SchemeDetails = () => {
         </ul>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

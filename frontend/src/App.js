@@ -12,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/SchemesDashboard" element={<SchemesDashboard />} />
+        <Route path="/footer" element={<footer />} />
         <Route path="/scheme/:id" element={<SchemeDetails />} />
         <Route path="/UserProfileForm" element={<UserProfileForm />} />
         {/* <Route path="/Chatbot" element={<Chatbot />} /> */}
